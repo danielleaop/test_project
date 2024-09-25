@@ -2,6 +2,7 @@ import { createClient } from "@/utils/supabase/server";
 import { InfoIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -25,6 +26,10 @@ export default async function ProtectedPage() {
       </div>
       <div className="flex flex-col gap-2 items-start">
         <h2 className="font-bold text-2xl mb-4">Your user details</h2>
+        <div className="flex gap-4 mt-4">
+          <Link href="/profile" className="text-blue-500 hover:underline">Profile</Link>
+          <Link href="/chat" className="text-blue-500 hover:underline">Chat</Link>
+        </div>
         <pre className="text-xs font-mono p-3 rounded border max-h-32 overflow-auto">
           {JSON.stringify(user, null, 2)}
         </pre>
